@@ -84,6 +84,7 @@ def create_single_football_env(iprocess):
 
 def train(_):
   """Trains a PPO2 policy."""
+  print("JR Num Steps:" + str(FLAGS.num_timesteps))
   vec_env = SubprocVecEnv([
       (lambda _i=i: create_single_football_env(_i))
       for i in range(FLAGS.num_envs)
