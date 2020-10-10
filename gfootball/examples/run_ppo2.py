@@ -101,7 +101,7 @@ def train(_):
   config.gpu_options.allow_growth = True
   tf.Session(config=config).__enter__()
 
-  ppo2.learn(network=FLAGS.policy,
+  model = ppo2.learn(network=FLAGS.policy,
              total_timesteps=FLAGS.num_timesteps,
              env=vec_env,
              seed=FLAGS.seed,
@@ -116,7 +116,7 @@ def train(_):
              save_interval=FLAGS.save_interval,
              cliprange=FLAGS.cliprange,
              load_path=FLAGS.load_path)
-
+  model.save()
 
 if __name__ == '__main__':
   app.run(train)
